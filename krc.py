@@ -155,13 +155,14 @@ class TaskBuilder:
         )
 
     def build(self, variant):
-        if variant == "one-step":
+    match variant:
+        case "one-step":
             return self.one_step()
-        elif variant == "two-step":
+        case "two-step":
             return self.two_step()
-        elif variant == "three-step":
+        case "three-step":
             return self.three_step()
-        elif variant == "concatenation":
+        case "concatenation":
             return self.concatenation()
-        else:
-            raise ValueError("variant is invalid")
+        case _:
+            raise ValueError(f"Invalid variant: {variant}")
